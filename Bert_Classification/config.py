@@ -8,9 +8,15 @@ import os.path
 
 
 def parsers():
-    #dir_data = "./data-all"
-    dir_data = "./data"
+    #class_num = 2
+    class_num = 10
+
+    # jy: 基于不同的类别数, 选择不同的文件夹中的数据(需提前规划好);
+    dir_data = "./data_%s_class" % class_num
+
     dir_out = "./model_out"
+
+
     parser = argparse.ArgumentParser(description="Bert model of argparse")
     parser.add_argument("--train_file", type=str, default=os.path.join(dir_data, "train.txt"))
     parser.add_argument("--dev_file", type=str, default=os.path.join(dir_data, "dev.txt"))
@@ -29,7 +35,7 @@ def parsers():
     #parser.add_argument("--is_do_predict_only", type=bool, default=True)
 
     # jy: 分类的类别数;
-    parser.add_argument("--class_num", type=int, default=10)
+    parser.add_argument("--class_num", type=int, default=class_num)
     # jy: 序列的最大长度, 实际训练过程中的 batch 中的序列的长度会比该值大 2;
     parser.add_argument("--max_len", type=int, default=38)
     # jy: 训练时的 batch_size 大小;
