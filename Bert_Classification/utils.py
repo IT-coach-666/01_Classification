@@ -53,7 +53,7 @@ class MyDataset(Dataset):
         # jy: str -> int
         label = int(label)
 
-        # 转化成 tensor
+        # jy: 转化成 tensor; 该过程其实可以放到上一层再转换; 
         token_id = torch.tensor(token_id)
         mask = torch.tensor(mask)
         label = torch.tensor(label)
