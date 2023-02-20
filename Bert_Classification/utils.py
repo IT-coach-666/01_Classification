@@ -30,6 +30,11 @@ class MyDataset(Dataset):
         # jy: label 如 "2"
         label = self.ls_label[index]
 
+        # jy: 以下是调用 self.tokenizer 的 tokenize 先将 text 文本进行 tokenize, 再将 token 转换为
+        #     对应的 token_id, 该方式为了最终转换得到的 token_id 中包含 "[CLS]" 对应的 token_id, 需要
+        #     提前中 token 文本列表中加入该标签; 
+        #     如果直接调用 self.tokenizer 类对 text 文本进行处理, 则不需要为 text 文本得到的 token 列表
+        #     添加 "[CLS]", 内部处理过程中即会自动进行该处理, 使得得到的 input_ids 中第一个 id 值即为 101;
         # jy: 分词, 得到的 text_id 如:
         #     ['a', '股', '难', '有', '大', '行', '情', '期', '待', '十', '月', '突', '围']
         text_id = self.tokenizer.tokenize(text)
