@@ -1,8 +1,3 @@
-# -*- coding:utf-8 -*-
-# @author: 木子川
-# @Data:   2022/8/8
-# @Email:  m21z50c71@163.com
-
 import argparse
 import os.path
 
